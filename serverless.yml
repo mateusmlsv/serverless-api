@@ -1,0 +1,36 @@
+service: challenge-api
+frameworkVersion: '2'
+
+custom:
+  tableName: 'employees-table-dev'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: sa-east-1
+  lambdaHashingVersion: 20201221
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+      - "arn:aws:dynamodb:sa-east-1:704017153546:table/employees-table-dev"
+  environment:
+    EMPLOYEES_TABLE: ${self:custom.tableName}
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
+
