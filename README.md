@@ -22,7 +22,9 @@ Aplicação para fazer upload de uma função lambda na [AWS](https://aws.amazon
 
 Utilize alguma aplicação para fazer requisições `HTTP` como [Postman](https://www.postman.com/)
 
-POST `https://uynvoaxh31.execute-api.sa-east-1.amazonaws.com/dev/employees`
+base_url: `https://uynvoaxh31.execute-api.sa-east-1.amazonaws.com/dev`
+
+POST `/employees`
 
 Body request:
 ```json
@@ -34,9 +36,9 @@ Body request:
 }
 ```
 
-GET `https://uynvoaxh31.execute-api.sa-east-1.amazonaws.com/dev/employees/1`
+GET `/employees/:employeeId`
 
-PUT `https://uynvoaxh31.execute-api.sa-east-1.amazonaws.com/dev/employees/1`
+PUT `/employees/:employeeId`
 
 Body request
 ```json
@@ -47,6 +49,6 @@ Body request
 }
 ```
 
-DELETE `https://uynvoaxh31.execute-api.sa-east-1.amazonaws.com/dev/employees/1`
+DELETE `/employees/:employeeId`
 
 ## 📄 Licença
